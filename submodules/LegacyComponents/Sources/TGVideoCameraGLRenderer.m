@@ -389,15 +389,15 @@
 	glVertexAttribPointer(1, 2, GL_FLOAT, 0, 0, _textureVertices);
 	glEnableVertexAttribArray(1);
     
-    glUniform1f(_opacityUniform, (GLfloat)_opacity);
-    glUniform1f(_aspectRatioUniform, (GLfloat)(1.0f / _aspectRatio));
-    glUniform1f(_noMirrorUniform, (GLfloat)(_mirror ? 1 : -1));
+	glUniform1f(_opacityUniform, (GLfloat)_opacity);
+	glUniform1f(_aspectRatioUniform, (GLfloat)(1.0f / _aspectRatio));
+	glUniform1f(_noMirrorUniform, (GLfloat)(_mirror ? 1 : -1));
 	
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	
 	glBindTexture(CVOpenGLESTextureGetTarget(srcTexture), 0);
-    if (hasPreviousTexture)
-        glBindTexture(CVOpenGLESTextureGetTarget(prevTexture), 0);
+	if (hasPreviousTexture)
+		glBindTexture(CVOpenGLESTextureGetTarget(prevTexture), 0);
 	glBindTexture(CVOpenGLESTextureGetTarget(dstTexture), 0);
 	
 	glFlush();
@@ -406,13 +406,13 @@ bail:
 	if (oldContext != _context)
 		[EAGLContext setCurrentContext:oldContext];
 	
-	if (srcTexture)
+	if (srcTexture) 
 		CFRelease(srcTexture);
     
-    if (prevTexture)
-        CFRelease(prevTexture);
+	if (prevTexture) 
+		CFRelease(prevTexture);
 	
-	if (dstTexture)
+	if (dstTexture) 
 		CFRelease(dstTexture);
 	
 	return dstPixelBuffer;
