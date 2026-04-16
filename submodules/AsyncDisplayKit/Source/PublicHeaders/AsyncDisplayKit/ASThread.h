@@ -137,6 +137,8 @@ namespace AS {
     Mutex (const Mutex&) = delete;
     Mutex &operator=(const Mutex&) = delete;
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wthread-safety-analysis"
     bool try_lock() {
       bool success = false;
       switch (_type) {
@@ -206,6 +208,7 @@ namespace AS {
           break;
       }
     }
+#pragma clang diagnostic pop
 
     void AssertHeld() {
       ASDisplayNodeCAssert(_owner == std::this_thread::get_id(), @"Thread should hold lock");
